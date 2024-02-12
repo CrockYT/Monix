@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="Academic Free License v3.0"
+
+[[mods]]
+modId="monix"
+version="1.0.0"
+displayName="Monix"
+credits="Created using mod maker MCreator - https://mcreator.net/about"
+displayURL="https://monix.crockcore.com"
+logoFile="logo.png"
+authors="CrockYT"
+description="Client-side GUI Mod"
+
+[[dependencies.monix]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2]"
+    ordering="NONE"
+    side="BOTH"
+
+
+
+

@@ -1,0 +1,12 @@
+{
+  "gui.monix.monix_gui_gamemode.button_creative": "Creative",
+  "gui.monix.monix_gui_gamemode.button_spectator": "Spectator",
+  "key.monix.monix_gui_main_key": "Monix Gui Main",
+  "gui.monix.monix_gui_page_1.Field_fly": "",
+  "gui.monix.monix_gui_page_1.tooltip_gamemode_changer": "Gamemode Changer",
+  "gui.monix.monix_gui_main.tooltip_tadanosuraimudao": "ただのスライムだお",
+  "gui.monix.monix_gui_main.button_page_reset": "page_reset",
+  "gui.monix.monix_gui_gamemode.button_survival": "Survival",
+  "gui.monix.monix_gui_page_1.tooltip_fei_xing_ke_bu_ke_neng": "飛行 可/不可能",
+  "gui.monix.monix_gui_gamemode.button_adventure": "Adventure"
+}
