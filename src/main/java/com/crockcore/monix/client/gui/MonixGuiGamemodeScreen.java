@@ -9,7 +9,6 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.Minecraft;
 
 import java.util.HashMap;
@@ -26,11 +25,11 @@ public class MonixGuiGamemodeScreen extends AbstractContainerScreen<MonixGuiGame
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
-	Button button_survival;
-	Button button_creative;
-	Button button_spectator;
-	Button button_adventure;
 	ImageButton imagebutton_back_1;
+	ImageButton imagebutton_creative_icon;
+	ImageButton imagebutton_adventure_icon;
+	ImageButton imagebutton_survival_icon;
+	ImageButton imagebutton_spectater_icon;
 
 	public MonixGuiGamemodeScreen(MonixGuiGamemodeMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -48,6 +47,14 @@ public class MonixGuiGamemodeScreen extends AbstractContainerScreen<MonixGuiGame
 		this.renderBackground(ms);
 		super.render(ms, mouseX, mouseY, partialTicks);
 		this.renderTooltip(ms, mouseX, mouseY);
+		if (mouseX > leftPos + 9 && mouseX < leftPos + 33 && mouseY > topPos + 9 && mouseY < topPos + 33)
+			this.renderTooltip(ms, new TranslatableComponent("gui.monix.monix_gui_gamemode.tooltip_creative"), mouseX, mouseY);
+		if (mouseX > leftPos + 42 && mouseX < leftPos + 66 && mouseY > topPos + 9 && mouseY < topPos + 33)
+			this.renderTooltip(ms, new TranslatableComponent("gui.monix.monix_gui_gamemode.tooltip_spectator"), mouseX, mouseY);
+		if (mouseX > leftPos + 140 && mouseX < leftPos + 164 && mouseY > topPos + 9 && mouseY < topPos + 33)
+			this.renderTooltip(ms, new TranslatableComponent("gui.monix.monix_gui_gamemode.tooltip_adventure"), mouseX, mouseY);
+		if (mouseX > leftPos + 174 && mouseX < leftPos + 198 && mouseY > topPos + 9 && mouseY < topPos + 33)
+			this.renderTooltip(ms, new TranslatableComponent("gui.monix.monix_gui_gamemode.tooltip_survival"), mouseX, mouseY);
 	}
 
 	@Override
@@ -93,45 +100,45 @@ public class MonixGuiGamemodeScreen extends AbstractContainerScreen<MonixGuiGame
 	public void init() {
 		super.init();
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-		button_survival = new Button(this.leftPos + 8, this.topPos + 8, 67, 20, new TranslatableComponent("gui.monix.monix_gui_gamemode.button_survival"), e -> {
+		imagebutton_back_1 = new ImageButton(this.leftPos + 0, this.topPos + 118, 48, 48, 0, 0, 48, new ResourceLocation("monix:textures/screens/atlas/imagebutton_back_1.png"), 48, 96, e -> {
 			if (true) {
 				MonixMod.PACKET_HANDLER.sendToServer(new MonixGuiGamemodeButtonMessage(0, x, y, z));
 				MonixGuiGamemodeButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
 		});
-		guistate.put("button:button_survival", button_survival);
-		this.addRenderableWidget(button_survival);
-		button_creative = new Button(this.leftPos + 132, this.topPos + 8, 67, 20, new TranslatableComponent("gui.monix.monix_gui_gamemode.button_creative"), e -> {
+		guistate.put("button:imagebutton_back_1", imagebutton_back_1);
+		this.addRenderableWidget(imagebutton_back_1);
+		imagebutton_creative_icon = new ImageButton(this.leftPos + 5, this.topPos + 5, 32, 32, 0, 0, 32, new ResourceLocation("monix:textures/screens/atlas/imagebutton_creative_icon.png"), 32, 64, e -> {
 			if (true) {
 				MonixMod.PACKET_HANDLER.sendToServer(new MonixGuiGamemodeButtonMessage(1, x, y, z));
 				MonixGuiGamemodeButtonMessage.handleButtonAction(entity, 1, x, y, z);
 			}
 		});
-		guistate.put("button:button_creative", button_creative);
-		this.addRenderableWidget(button_creative);
-		button_spectator = new Button(this.leftPos + 8, this.topPos + 29, 72, 20, new TranslatableComponent("gui.monix.monix_gui_gamemode.button_spectator"), e -> {
+		guistate.put("button:imagebutton_creative_icon", imagebutton_creative_icon);
+		this.addRenderableWidget(imagebutton_creative_icon);
+		imagebutton_adventure_icon = new ImageButton(this.leftPos + 38, this.topPos + 5, 32, 32, 0, 0, 32, new ResourceLocation("monix:textures/screens/atlas/imagebutton_adventure_icon.png"), 32, 64, e -> {
 			if (true) {
 				MonixMod.PACKET_HANDLER.sendToServer(new MonixGuiGamemodeButtonMessage(2, x, y, z));
 				MonixGuiGamemodeButtonMessage.handleButtonAction(entity, 2, x, y, z);
 			}
 		});
-		guistate.put("button:button_spectator", button_spectator);
-		this.addRenderableWidget(button_spectator);
-		button_adventure = new Button(this.leftPos + 127, this.topPos + 29, 72, 20, new TranslatableComponent("gui.monix.monix_gui_gamemode.button_adventure"), e -> {
+		guistate.put("button:imagebutton_adventure_icon", imagebutton_adventure_icon);
+		this.addRenderableWidget(imagebutton_adventure_icon);
+		imagebutton_survival_icon = new ImageButton(this.leftPos + 170, this.topPos + 5, 32, 32, 0, 0, 32, new ResourceLocation("monix:textures/screens/atlas/imagebutton_survival_icon.png"), 32, 64, e -> {
 			if (true) {
 				MonixMod.PACKET_HANDLER.sendToServer(new MonixGuiGamemodeButtonMessage(3, x, y, z));
 				MonixGuiGamemodeButtonMessage.handleButtonAction(entity, 3, x, y, z);
 			}
 		});
-		guistate.put("button:button_adventure", button_adventure);
-		this.addRenderableWidget(button_adventure);
-		imagebutton_back_1 = new ImageButton(this.leftPos + 0, this.topPos + 118, 48, 48, 0, 0, 48, new ResourceLocation("monix:textures/screens/atlas/imagebutton_back_1.png"), 48, 96, e -> {
+		guistate.put("button:imagebutton_survival_icon", imagebutton_survival_icon);
+		this.addRenderableWidget(imagebutton_survival_icon);
+		imagebutton_spectater_icon = new ImageButton(this.leftPos + 136, this.topPos + 5, 32, 32, 0, 0, 32, new ResourceLocation("monix:textures/screens/atlas/imagebutton_spectater_icon.png"), 32, 64, e -> {
 			if (true) {
 				MonixMod.PACKET_HANDLER.sendToServer(new MonixGuiGamemodeButtonMessage(4, x, y, z));
 				MonixGuiGamemodeButtonMessage.handleButtonAction(entity, 4, x, y, z);
 			}
 		});
-		guistate.put("button:imagebutton_back_1", imagebutton_back_1);
-		this.addRenderableWidget(imagebutton_back_1);
+		guistate.put("button:imagebutton_spectater_icon", imagebutton_spectater_icon);
+		this.addRenderableWidget(imagebutton_spectater_icon);
 	}
 }

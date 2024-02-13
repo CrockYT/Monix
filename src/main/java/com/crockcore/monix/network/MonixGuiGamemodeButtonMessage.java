@@ -68,7 +68,7 @@ public class MonixGuiGamemodeButtonMessage {
 			return;
 		if (buttonID == 0) {
 
-			SurvivalProcedure.execute(entity);
+			MonixGuiGamemodebackProcedure.execute(world, x, y, z, entity);
 		}
 		if (buttonID == 1) {
 
@@ -80,11 +80,11 @@ public class MonixGuiGamemodeButtonMessage {
 		}
 		if (buttonID == 3) {
 
-			AdventureProcedure.execute(entity);
+			SurvivalProcedure.execute(entity);
 		}
 		if (buttonID == 4) {
 
-			MonixGuiGamemodebackProcedure.execute(world, x, y, z, entity);
+			AdventureProcedure.execute(entity);
 		}
 	}
 
